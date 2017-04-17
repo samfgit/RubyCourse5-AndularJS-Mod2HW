@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Lists</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+    	.listItem {
+    		margin-top: 10px;
+    	}
+    </style>
+</head>
+<body ng-app="ShoppingListCheckOff">
+	<div class="container">
+		<div class="row">
+			<div ng-controller="ToBuyController as BuyList" class="col-sm-6">
+				<h1>Items To Buy: </h1>
+				<p ng-if="toBuyItems.length < 1">Everything is bought!</p>
+				<ul>
+					<li class="listItem" ng-repeat="i in toBuyItems">
+					Buy {{i.quantity}} {{i.name}} <p class="btn btn-default btn-sm" ng-click="moveItemToBought($index)">Bought</p>
+					</li>
+				</ul>
+
+				<form class="newItemForm">
+					<h1>Add New Item To Buy</h1>
+					<input type="textBox" name="itemName" placeholder="Item Name" ng-model="newItemName">
+					<input type="textBox" name="itemQuant" placeholder="Item Quantity" ng-model="newItemQuant">
+					<button ng-click="addNewItem()">Add</button>
+				</form>
+			</div>
+			<div ng-controller="AlreadyBoughtController as BoughtList" class="col-sm-6">
+				<h1>Items Already Bought: </h1>
+				<p ng-if="boughtItems.length < 1">Nothing bought yet!</p>
+				<ul>
+					<li class="listItem" ng-repeat="i in boughtItems">
+					Bought {{i.quantity}} {{i.name}}
+					</li>
+				</ul>				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
