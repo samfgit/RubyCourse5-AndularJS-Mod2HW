@@ -13,12 +13,12 @@ function ToBuyController($scope,$ShoppingListCheckOffService) {
 
 	$scope.addNewItem = function () {
 		$ShoppingListCheckOffService.addItem($scope.newItemName,$scope.newItemQuant);
-		console.log('added');
+		// console.log('added');
 	};
 
 	$scope.moveItemToBought = function (index) {
 		$ShoppingListCheckOffService.moveItemToBought(index);
-		console.log(index);
+		// console.log(index);
 	}
 };
 
@@ -51,7 +51,7 @@ function ShoppingListCheckOffService() {
 		};
 
 		buyList.push(newItem);
-		console.log(buyList);
+		// console.log(buyList);
 	}
 
 	this.moveItemToBought = function (index) {

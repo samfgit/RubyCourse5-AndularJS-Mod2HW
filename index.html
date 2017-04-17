@@ -10,35 +10,60 @@
     	.listItem {
     		margin-top: 10px;
     	}
+    	.userMsg {
+    		padding: 5px; 
+    		width: auto;
+    	}
+    	.tip {
+    		color: green;
+    	}
+    	.warning {
+    		color:green;
+    	}
+    	.error {
+    		color:red;
+    	}
     </style>
 </head>
 <body ng-app="ShoppingListCheckOff">
 	<div class="container">
 		<div class="row">
 			<div ng-controller="ToBuyController as BuyList" class="col-sm-6">
-				<h1>Items To Buy: </h1>
-				<p ng-if="toBuyItems.length < 1">Everything is bought!</p>
-				<ul>
-					<li class="listItem" ng-repeat="i in toBuyItems">
-					Buy {{i.quantity}} {{i.name}} <p class="btn btn-default btn-sm" ng-click="moveItemToBought($index)">Bought</p>
-					</li>
-				</ul>
-
-				<form class="newItemForm">
-					<h1>Add New Item To Buy</h1>
-					<input type="textBox" name="itemName" placeholder="Item Name" ng-model="newItemName">
-					<input type="textBox" name="itemQuant" placeholder="Item Quantity" ng-model="newItemQuant">
-					<button ng-click="addNewItem()">Add</button>
-				</form>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<h1>Items To Buy: </h1>
+							<p ng-if="toBuyItems.length < 1" class="tip userMsg col-sm-1">Everything is bought!</p>
+							<ul>
+								<li class="listItem" ng-repeat="i in toBuyItems">
+								Buy {{i.quantity}} {{i.name}} <p class="btn btn-default btn-sm" ng-click="moveItemToBought($index)">Bought</p>
+								</li>
+							</ul>
+						</div>
+						<form class="newItemForm col-sm-12">
+							<h1>Add New Item To Buy</h1>
+							<input type="textBox" name="itemName" placeholder="Item Name" ng-model="newItemName">
+							<input type="textBox" name="itemQuant" placeholder="Item Quantity" ng-model="newItemQuant">
+							<button ng-click="addNewItem()">Add</button>
+						</form>
+					</div>
+				</div>
+				
 			</div>
 			<div ng-controller="AlreadyBoughtController as BoughtList" class="col-sm-6">
-				<h1>Items Already Bought: </h1>
-				<p ng-if="boughtItems.length < 1">Nothing bought yet!</p>
-				<ul>
-					<li class="listItem" ng-repeat="i in boughtItems">
-					Bought {{i.quantity}} {{i.name}}
-					</li>
-				</ul>				
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<h1>Items Already Bought: </h1>
+							<p ng-if="boughtItems.length < 1" class="error userMsg col-sm-1">Nothing bought yet!</p>
+							<ul class="col-sm-12">
+								<li class="listItem" ng-repeat="i in boughtItems">
+								Bought {{i.quantity}} {{i.name}}
+								</li>
+							</ul>	
+						</div>
+					</div>
+				</div>			
 			</div>
 		</div>
 	</div>
